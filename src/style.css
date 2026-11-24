@@ -1,0 +1,254 @@
+:root {
+  --ft-bg: #f5f6f4;
+  --ft-card: #ffffff;
+  --ft-border: #e3e6e2;
+  --ft-text: #23282a;
+  --ft-muted: #6b7570;
+  --ft-green: #3d7a5f;
+  --ft-green-hover: #356b53;
+  --ft-green-soft: #e8f2ec;
+  --ft-graphite: #31383b;
+  --ft-radius: 12px;
+}
+
+* {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: var(--ft-bg);
+  color: var(--ft-text);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 230px;
+  background: var(--ft-card);
+  border-right: 1px solid var(--ft-border);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 0.75rem;
+  z-index: 1040;
+  transition: transform 0.25s ease;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 0 0.75rem 1rem;
+  color: var(--ft-green);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  color: var(--ft-muted);
+  text-decoration: none;
+  font-size: 0.925rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-nav .nav-link i {
+  font-size: 1.1rem;
+}
+
+.sidebar-nav .nav-link:hover {
+  background: var(--ft-bg);
+  color: var(--ft-text);
+}
+
+.sidebar-nav .nav-link.active {
+  background: var(--ft-green-soft);
+  color: var(--ft-green);
+  font-weight: 600;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1035;
+}
+
+.sidebar-backdrop.show {
+  display: block;
+}
+
+/* ---------- Layout ---------- */
+.main-content {
+  margin-left: 230px;
+  min-height: 100vh;
+}
+
+.topbar {
+  height: 60px;
+  padding: 0 1.5rem;
+  background: var(--ft-card);
+  border-bottom: 1px solid var(--ft-border);
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.page-title {
+  font-size: 1rem;
+}
+
+.screen {
+  display: none;
+  padding: 1.5rem;
+  max-width: 1200px;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  border: 1px solid var(--ft-border);
+  border-radius: var(--ft-radius);
+  box-shadow: none;
+}
+
+.card-header {
+  background: var(--ft-card);
+  border-bottom: 1px solid var(--ft-border);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--ft-radius) var(--ft-radius) 0 0 !important;
+}
+
+.dashboard-hero {
+  background: var(--ft-graphite);
+  color: #fff;
+  border: none;
+}
+
+.dashboard-hero .text-body-secondary {
+  color: #b8bfc0 !important;
+}
+
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  color: var(--ft-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-card .stat-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ft-text);
+  line-height: 1.2;
+}
+
+/* ---------- Fichas ---------- */
+.ficha-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercicio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ft-border);
+}
+
+.exercicio-item:last-child {
+  border-bottom: none;
+}
+
+.exercicio-order {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ft-green-soft);
+  color: var(--ft-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.badge-grupo {
+  background: var(--ft-green-soft);
+  color: var(--ft-green);
+  font-weight: 500;
+  font-size: 0.72rem;
+}
+
+/* ---------- Formulários ---------- */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ft-green);
+  box-shadow: 0 0 0 0.2rem rgba(61, 122, 95, 0.15);
+}
+
+.btn-success {
+  --bs-btn-bg: var(--ft-green);
+  --bs-btn-border-color: var(--ft-green);
+  --bs-btn-hover-bg: var(--ft-green-hover);
+  --bs-btn-hover-border-color: var(--ft-green-hover);
+  --bs-btn-active-bg: var(--ft-green-hover);
+  --bs-btn-active-border-color: var(--ft-green-hover);
+}
+
+.btn-outline-success {
+  --bs-btn-color: var(--ft-green);
+  --bs-btn-border-color: var(--ft-green);
+  --bs-btn-hover-bg: var(--ft-green);
+  --bs-btn-hover-border-color: var(--ft-green);
+  --bs-btn-active-bg: var(--ft-green);
+  --bs-btn-active-border-color: var(--ft-green);
+}
+
+/* ---------- Tabela ---------- */
+.table > :not(caption) > * > * {
+  padding: 0.75rem 1rem;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  border-radius: 10px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 991.98px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .main-content {
+    margin-left: 0;
+  }
+  .screen {
+    padding: 1rem;
+  }
+}

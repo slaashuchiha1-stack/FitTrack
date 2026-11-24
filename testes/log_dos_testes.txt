@@ -1,0 +1,103 @@
+
+## 1. Primeira abertura: dados de demonstração e Dashboard
+PASS  3 fichas de demonstração gravadas  -> Ficha A, Ficha B, Ficha C
+PASS  8 treinos de demonstração gravados
+PASS  indicador de fichas mostra 3
+PASS  lista de atividades recentes tem 5 itens
+PASS  gráfico do painel tem 8 pontos (um por treino)  -> [27,33.3,73.3,29.3,36.7,80,31,39.2]
+PASS  último treino exibido corretamente  -> 23/11/2026
+PASS  carga média do treino mais recente = soma/nº de exercícios  -> 39.2 kg
+PASS  saudação segue o padrão 'Bom dia/Boa tarde/Boa noite! ...'  -> Bom dia! Pronto para treinar?
+
+## 2. Navegação entre as quatro telas
+PASS  tela fichas: título e tela ativa corretos  -> Minhas fichas / screen-fichas
+PASS  tela treino: título e tela ativa corretos  -> Executar treino / screen-treino
+PASS  tela evolucao: título e tela ativa corretos  -> Minha evolução / screen-evolucao
+PASS  tela dashboard: título e tela ativa corretos  -> Dashboard / screen-dashboard
+PASS  botão do Dashboard leva à tela Executar treino
+
+## 3. Fichas: criar, validar nome vazio e escapar HTML
+PASS  3 cartões de ficha exibidos
+PASS  ficha válida criada (4 cartões)
+PASS  mensagem 'Ficha criada.'
+PASS  nome em branco é recusado (continuam 4 fichas)
+PASS  campo marcado como inválido
+PASS  HTML limita o nome da ficha a 50 e a descrição a 200 caracteres
+PASS  texto com HTML é exibido como texto (sem injeção)
+
+## 4. Exercícios: adicionar, validar, reordenar e editar
+PASS  exercício válido adicionado à ficha
+PASS  grupo muscular tem 8 opções
+PASS  exercício inválido recusado (sem nome)
+PASS  exercício inválido recusado (sem grupo)
+PASS  exercício inválido recusado (séries = 0)
+PASS  exercício inválido recusado (séries = 21)
+PASS  exercício inválido recusado (séries decimal)
+PASS  exercício inválido recusado (repetições = 0)
+PASS  exercício inválido recusado (repetições = 51)
+PASS  limite de 80 caracteres no nome do exercício e faixa 1–20 / 1–50 no HTML
+PASS  botão 'subir' do 1º exercício e 'descer' do último ficam desabilitados
+PASS  mover para baixo troca os dois primeiros exercícios  -> Desenvolvimento halteres / Supino reto
+PASS  editar exercício atualiza o nome
+
+## 5. Exclusão com confirmação e preservação do histórico
+PASS  cancelar a confirmação NÃO exclui a ficha
+PASS  confirmar exclui a ficha (3 -> 2)
+PASS  lista de treinos permanece idêntica (histórico preservado)  -> 8 treinos
+PASS  Dashboard mostra 'Ficha removida' nos treinos órfãos  -> 3 treinos da ficha excluída
+PASS  Evolução continua listando os exercícios da ficha excluída  -> 9 exercícios na lista
+PASS  excluir exercício remove da ficha, sem alterar os treinos
+
+## 6. Executar treino: gravação válida
+PASS  data já vem preenchida com hoje
+PASS  um cartão por exercício da ficha selecionada
+PASS  passo do campo de carga é 0,5 e a sugestão de repetições é o valor planejado
+PASS  treino gravado (8 -> 9)
+PASS  somente os 2 exercícios preenchidos viram itens  -> Supino reto, Desenvolvimento halteres
+PASS  repetições vazias assumem o valor planejado  -> 10 reps
+PASS  item guarda nome do exercício (snapshot)
+PASS  mensagem de sucesso e campos limpos  -> Treino da Ficha A salvo (24/11/2026).
+
+## 7. Executar treino: entradas inválidas (nenhum treino pode ser gravado)
+PASS  nada preenchido  -> Preencha pelo menos um exercício para salvar o treino.
+PASS  data vazia  -> Informe uma data válida para o treino.
+PASS  data inexistente (31/02)  -> Informe uma data válida para o treino.
+PASS  carga igual a zero  -> Informe uma carga válida para "Supino reto".
+PASS  carga negativa  -> Informe uma carga válida para "Supino reto".
+PASS  repetições sem carga  -> Informe uma carga válida para "Supino reto".
+PASS  repetições acima de 100  -> Informe repetições válidas para "Supino reto".
+PASS  repetições decimais  -> Informe repetições válidas para "Supino reto".
+PASS  sem ficha selecionada  -> Selecione uma ficha para salvar o treino.
+
+## 8. Minha evolução: gráfico, maior carga, tabela e comparação
+PASS  lista de exercícios vem dos treinos e está em ordem alfabética  -> Agachamento livre | Desenvolvimento halteres | Elevação de panturrilha | Leg press | Puxada frontal | Remada curvada | Rosca direta | Supino reto | Tríceps na polia
+PASS  primeiro exercício já vem selecionado  -> Agachamento livre
+PASS  gráfico usa as cargas do exercício em ordem cronológica  -> [60,65]
+PASS  maior carga exibida  -> 65 kg
+PASS  tabela lista do mais recente para o mais antigo  -> 18/11/2026, 09/11/2026
+PASS  comparação mostra diferença em kg e em % (ponto decimal)  -> 18/11/202665 kg 09/11/202660 kg +5 kg (+8.3%)
+PASS  aumento aparece em verde (text-success)
+PASS  comparação inversa mostra queda em vermelho  -> 09/11/202660 kg 18/11/202665 kg -5 kg (-7.7%)
+PASS  com um único registro a janela avisa que não há o que comparar  -> Não há outros registros para comparar com 01/11/2026.
+
+## 9. Estados vazios (nenhum dado cadastrado)
+PASS  Dashboard: indicadores zerados e aviso
+PASS  Fichas: mensagem de lista vazia
+PASS  Treino: pede para selecionar ficha
+PASS  Evolução: mensagem no gráfico, '—' na maior carga e aviso na tabela
+
+## 10. Persistência e erros de JavaScript
+PASS  dados continuam após recarregar a página
+PASS  nenhum erro de JavaScript no console durante todo o roteiro  -> nenhum
+
+=== RESUMO: 71/71 verificações aprovadas ===
+OK   1. Primeira abertura: dados de demonstração e Dashboard: 8/8
+OK   2. Navegação entre as quatro telas: 5/5
+OK   3. Fichas: criar, validar nome vazio e escapar HTML: 7/7
+OK   4. Exercícios: adicionar, validar, reordenar e editar: 13/13
+OK   5. Exclusão com confirmação e preservação do histórico: 6/6
+OK   6. Executar treino: gravação válida: 8/8
+OK   7. Executar treino: entradas inválidas (nenhum treino pode ser gravado): 9/9
+OK   8. Minha evolução: gráfico, maior carga, tabela e comparação: 9/9
+OK   9. Estados vazios (nenhum dado cadastrado): 4/4
+OK   10. Persistência e erros de JavaScript: 2/2
